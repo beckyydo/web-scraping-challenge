@@ -13,7 +13,7 @@ from splinter import Browser
 # In[2]:
 
 
-executable_path = {'executable_path': 'chromedriver'}
+executable_path = {'executable_path': 'chromedriver',}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
@@ -26,18 +26,39 @@ browser = Browser('chrome', **executable_path, headless=False)
 # NASA Mars News
 url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
 browser.visit(url)
-html = browser.html
-
-# Parse html
-soup = bs(html, 'html.parser')
 
 
 # In[4]:
 
 
-# Get latest news title and paragraph
+browser.windows.current 
+
+
+# In[5]:
+
+
+# Get html of browser
+html = browser.html
+
+
+# In[6]:
+
+
+# Parse html
+soup = bs(html, 'html.parser')
+
+
+# In[7]:
+
+
+# Get "div" tag class "content_title"
 content_title = soup.find_all("div", class_="content_title")
 
+
+# In[8]:
+
+
+# Get latest news title and paragraph
 for title in content_title:
     try:
         news_title = title.find("a").text.strip()
@@ -49,7 +70,7 @@ for title in content_title:
 news_title
 
 
-# In[5]:
+# In[9]:
 
 
 # Get latest paragraph
@@ -59,37 +80,80 @@ news_p = soup.find("div", class_= 'article_teaser_body').text.strip()
 news_p
 
 
+# In[10]:
+
+
+browser.quit()
+
+
 # ### JPL Mars Space Images - Featured Image
 
-# In[6]:
+# In[11]:
+
+
+executable_path = {'executable_path': 'chromedriver',}
+browser = Browser('chrome', **executable_path, headless=False)
+
+
+# In[12]:
 
 
 # JPL Mars Space Images - Featured Image
 base_url = "https://www.jpl.nasa.gov"
 url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
+
+
+# In[13]:
+
+
+# Visit url
 browser.visit(url)
 
 
-# In[7]:
+# In[14]:
 
 
 # Click FULL IMAGE
 browser.click_link_by_id('full_image')
 
 
-# In[8]:
+# In[15]:
 
 
+# Go to current window
+browser.windows.current 
+
+
+# In[16]:
+
+
+# Get html from browser
 html = browser.html
+
+
+# In[17]:
+
 
 # Parse html
 soup = bs(html, 'html.parser')
 
 
-# In[9]:
+# In[18]:
 
 
-img = soup.find_all("img", class_ = "fancybox-image")[0]
+# Find img tag
+img = soup.find("img", class_ = "fancybox-image")
+
+
+# In[19]:
+
+
+img
+
+
+# In[20]:
+
+
 featured_image_url = base_url + img['src']
 
 # Display featured image url
@@ -98,7 +162,7 @@ featured_image_url
 
 # ### Mars Facts
 
-# In[10]:
+# In[21]:
 
 
 # Mars Facts
@@ -106,7 +170,7 @@ url = "https://space-facts.com/mars/"
 browser.visit(url)
 
 
-# In[11]:
+# In[22]:
 
 
 html = browser.html
@@ -115,7 +179,7 @@ html = browser.html
 soup = bs(html, 'html.parser')
 
 
-# In[12]:
+# In[23]:
 
 
 # Extract html column as list
@@ -125,14 +189,14 @@ col_2 = soup.find_all("td", class_ = "column-2")
 col_2 = [header.text for header in col_2]
 
 
-# In[13]:
+# In[24]:
 
 
 # Create dataframe from extracted column
 mars_df = pd.DataFrame({"":col_1, " ":col_2})
 
 
-# In[14]:
+# In[25]:
 
 
 # Convert dataframe to html table
@@ -141,7 +205,7 @@ table_html = mars_df.to_html(header=False)
 
 # ### Mars Hemispheres
 
-# In[15]:
+# In[26]:
 
 
 # Vist url
@@ -156,14 +220,14 @@ html = browser.html
 soup = bs(html, "html.parser")
 
 
-# In[16]:
+# In[27]:
 
 
 # Find html with tag "a" and class "product-item"
 results = soup.find_all("a", class_ = "product-item")
 
 
-# In[17]:
+# In[28]:
 
 
 # Get the links for all the hemisphere
@@ -177,7 +241,7 @@ for item in results:
         image_links.append(base_url+url_parameter)
 
 
-# In[18]:
+# In[29]:
 
 
 # Function to get the dictionary of image url and title
@@ -201,6 +265,12 @@ for i in range(len(title)):
     
 # Display img_url
 hemisphere_image_urls
+
+
+# In[30]:
+
+
+browser.quit()
 
 
 # In[ ]:
