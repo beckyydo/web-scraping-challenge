@@ -9,3 +9,5 @@
 [1221/172742.287:ERROR:exception_snapshot_win.cc(99)] thread ID 26240 not found in process
 [1223/195317.788:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1223/203004.884:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1226/143844.979:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1226/151548.611:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
