@@ -18,5 +18,3 @@ hemisphere_image_urls = [{'title': 'Cerberus Hemisphere',
   'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg'},
  {'title': 'Valles Marineris Hemisphere',
   'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg'}]
-
-
