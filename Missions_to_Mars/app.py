@@ -14,7 +14,7 @@ def scrape():
                     "Table HTML": table_html,
                     "Hemisphere Name & URL": hemisphere_image_urls
     }
-    return scrape
+    return scrape_dict
 
 # Create instance of Flask
 app = Flask(__name__)
