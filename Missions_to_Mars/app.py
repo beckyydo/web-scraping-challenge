@@ -22,13 +22,6 @@ def scrape():
 # Create instance of Flask
 app = Flask(__name__)
 
-# Use PyMongo to establish Mongo connection
-conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(conn)
-
-# Declare the database
-db = client.Mars_db
-
 # Connect to Mars database in Mongo
 mongo = PyMongo(app, uri="mongodb://localhost:27017/Mars_db")
 

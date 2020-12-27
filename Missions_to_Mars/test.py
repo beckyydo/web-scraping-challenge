@@ -1,16 +1,10 @@
-# Define scrape function
-def scrape():
-    # Execute scrape_test.py 
-    from scrape_test import news_title, news_p, featured_image_url, table_html, hemisphere_image_urls
+from flask import Flask, render_template, redirect
+import pymongo
+from flask_pymongo import PyMongo
 
-    # Return one Python dictionary of all scraped data
-    scrape_dict = {
-        "news_title": news_title,
-        "news_paragraph": news_p,
-        "featured_image_url": featured_image_url,
-        "table_html": table_html,
-        "hemisphere_image_urls": hemisphere_image_urls
-    }
-    return scrape_dict
+# Use PyMongo to establish Mongo connection
+conn = 'mongodb://localhost:27017/'
+client = pymongo.MongoClient(conn)
 
-print(scrape())
+# Declare the database
+db = client["Mars_db"]

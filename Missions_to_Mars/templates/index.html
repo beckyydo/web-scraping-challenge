@@ -25,20 +25,13 @@
 
   <h3>Mars Facts</h3>
   <p>{{news.table_html}}</p>
-  
 
   <h2>Mars Hemispheres</h2>
-  <img src = {{news.hemisphere_image_urls[0]['img_url']}} alt = "hemisphere 1">
-  <h4>{{news.hemisphere_image_urls[0]['title']}}</h4>
+  {% for item in news %}  
+  <img src = {{item.hemisphere_image_urls['img_url']}} alt = "hemisphere 1">
+  <h4>{{item.hemisphere_image_urls['title']}}</h4>
 
-  <img src = {{news.hemisphere_image_urls[1]['img_url']}} alt = "hemisphere 2">
-  <h4>{{news.hemisphere_image_urls[1]['title']}}</h4>
-
-  <img src = {{news.hemisphere_image_urls[2]['img_url']}} alt = "hemisphere 3">
-  <h4>{{news.hemisphere_image_urls[2]['title']}}</h4>
-
-  <img src = {{news.hemisphere_image_urls[3]['img_url']}} alt = "hemisphere 4">
-  <h4>{{news.hemisphere_image_urls[3]['title']}}</h4>
+  {% endfor %}
 
 </body>
 
