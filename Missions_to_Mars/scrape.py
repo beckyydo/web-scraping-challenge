@@ -1,5 +1,3 @@
-from flask import Flask
-
 # NASA Mars News
 news_title = "A Martian Roundtrip: NASA's Perseverance Rover Sample Tubes"
 news_p = "Marvels of engineering, the rover's sample tubes must be tough enough to safely bring Red Planet samples on the long journey back to Earth in immaculate condition."
