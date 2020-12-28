@@ -2,22 +2,7 @@
 from flask import Flask, render_template, redirect
 import pymongo
 from flask_pymongo import PyMongo
-
-# Define scrape function
-def scrape():
-    # Execute scrape_test.py 
-    from scrape_test import news_title, news_p, featured_image_url, table_html, hemisphere_image_urls
-    #import scrape_mars
-
-    # Return one Python dictionary of all scraped data
-    scrape_dict = {
-        "news_title": news_title,
-        "news_paragraph": news_p,
-        "featured_image_url": featured_image_url,
-        "table_html": table_html,
-        "hemisphere_image_urls": hemisphere_image_urls
-    }
-    return scrape_dict
+import scrape_mars
 
 # Create instance of Flask
 app = Flask(__name__)
@@ -39,7 +24,7 @@ def home():
 @app.route("/scrape")
 def scrape_info():
     # Run scrape function
-    scrape_data = scrape()
+    scrape_data = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
     mongo.db.collection.update({}, scrape_data, upsert=True)
