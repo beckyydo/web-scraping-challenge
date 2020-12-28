@@ -21,16 +21,18 @@
   <p>{{news.news_p}}</p>
 
   <h2>Featured Mars Image</h2>
-  <img src = {{news.featured_image_url}} alt= "featured_image">
-
-
+  <div class = col-md-6>
+    <img src = {{news.featured_image_url}} alt= "featured_image">  
+  </div>
+  
   <h3>Mars Facts</h3>
-  <p>{{news.table_html}}</p>
+  <div class= "col-md-4">{{news.table_html|safe}}
+  </div>
 
+
+  <div class = "container">
   <h2 class="header_align">Mars Hemispheres</h2>
   <hr/>
-  <div class = "container">
-
   {% for item in news.hemisphere_image_urls %}  
     <div class = "col-md-6">
     <img src = {{item.img_url}} class = "img-auto" alt = "hemisphere name and image">
