@@ -16,8 +16,8 @@
     </div>
   </div>
   <h2>Latest Mars News</h2>
-  <h3>{{news.news_title}}</h3>
-  <p>{{news.news_p}}</p>
+  <h4>{{news.news_title}}</h4>
+  <p>hello {{news.news_p}}</p>
 
   <h2>Featured Mars Image</h2>
   <img src = {{news.featured_image_url}} alt= "featured_image">
@@ -27,11 +27,15 @@
   <p>{{news.table_html}}</p>
 
   <h2>Mars Hemispheres</h2>
-  {% for item in news %}  
-  <img src = {{item.hemisphere_image_urls['img_url']}} alt = "hemisphere 1">
-  <h4>{{item.hemisphere_image_urls['title']}}</h4>
+  <div class = "container">
+  {% for item in news.hemisphere_image_urls %}  
+  <div class = "col-md-6">
+  <img src = {{item.img_url}} class = "img-auto" alt = "hemisphere name and image">
+  <h4>{{item.title}}</h4>  
+  </div>
+  {% endfor %}    
+  </div>
 
-  {% endfor %}
 
 </body>
 
