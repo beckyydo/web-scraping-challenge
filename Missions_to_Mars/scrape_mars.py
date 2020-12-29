@@ -27,6 +27,7 @@ def scrape():
     browser.visit(url)
     # Click FULL IMAGE
     browser.click_link_by_id('full_image')
+    browser.windows.current
     # Get html from browser
     html = browser.html
     # Parse html
