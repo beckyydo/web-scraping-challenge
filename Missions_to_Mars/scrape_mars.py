@@ -2,6 +2,7 @@ import pandas as pd
 from bs4 import BeautifulSoup as bs
 import requests
 from splinter import Browser
+import time
 
 def scrape():
     executable_path = {'executable_path': 'chromedriver',}
@@ -9,6 +10,7 @@ def scrape():
     # NASA Mars News
     url = "https://mars.nasa.gov/news"
     browser.visit(url)
+    time.sleep(5)
     # Get html of browser
     html = browser.html
     # Parse html
@@ -27,7 +29,7 @@ def scrape():
     browser.visit(url)
     # Click FULL IMAGE
     browser.click_link_by_id('full_image')
-    browser.windows.current
+    time.sleep(5)
     # Get html from browser
     html = browser.html
     # Parse html
@@ -40,19 +42,10 @@ def scrape():
     # Mars Facts
     url = "https://space-facts.com/mars/"
     browser.visit(url)
-    html = browser.html
-    # Parse html
-    soup = bs(html, 'html.parser')
-    # Extract html column as list
-    col_1 = soup.find_all("td", class_ = "column-1")
-    col_1 = [header.text for header in col_1]
-    col_2 = soup.find_all("td", class_ = "column-2")
-    col_2 = [header.text for header in col_2]
-    # Create dataframe from extracted column
-    mars_df = pd.DataFrame({"":col_1, " ":col_2})
-    # Convert dataframe to html table
-    table_html = mars_df.to_html(header=False)
-
+    time.sleep(5)
+    mars = pd.read_html(url)
+    table_html = mars[0].to_html(header=False)
+    
     # Vist url
     base_url = "https://astrogeology.usgs.gov"
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -60,7 +53,7 @@ def scrape():
 
     # Get html of current browser
     html = browser.html
-
+    time.sleep(5)
     # Parse html
     soup = bs(html, "html.parser")
     # Find html with tag "a" and class "product-item"
