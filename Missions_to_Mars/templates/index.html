@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 
@@ -20,25 +21,25 @@
   <div class = "container">
     <div class = "row">
       <div class = "col-md-12">
-        <h2>Latest Mars News</h2>
-        <h4>{{news.news_title}}</h4>
+        <h1>Latest Mars News</h1>
+        <h3>{{news.news_title}}</h3>
         <p>{{news.news_p}}</p>  
       </div> 
     </div>
     <div class = "row">
       <div class = col-md-8>
-        <h2>Featured Mars Image</h2>
-        <img src = {{news.featured_image_url}} class = "ft-img-auto" alt= "featured_image">  
+        <h1>Featured Mars Image</h1>
+        <img src = {{news.featured_image_url}} class="img-responsive" alt= "featured_image">  
       </div>  
       <div class= "col-md-4"> 
-        <h3>Mars Facts</h3>
+        <h1>Mars Facts</h1>
         {{news.table_html|safe}}
       </div>    
     </div>
   </div>
-
+  </br>
   <div class = "container">
-  <h2 class="header_align">Mars Hemispheres</h2>
+  <h1 class="header_align">Mars Hemispheres</h1>
   <hr/>
   {% for item in news.hemisphere_image_urls %}  
     <div class = "col-md-6">
@@ -48,7 +49,9 @@
   {% endfor %}    
 
   </div>
-
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 

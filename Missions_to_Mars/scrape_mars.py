@@ -45,7 +45,10 @@ def scrape():
     browser.visit(url)
     time.sleep(3)
     mars = pd.read_html(url)
-    table_html = mars[0].to_html(header=False, classes = "table-striped")
+    mars_df = mars[0]
+    mars_df = mars_df.rename(columns={0:"Description",1:"Mars"})
+    mars_df = mars_df.set_index("Description")  
+    table_html = mars_df.to_html(header=False, classes = "table-striped")
     
     # Vist url
     base_url = "https://astrogeology.usgs.gov"
