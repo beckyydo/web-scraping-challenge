@@ -10,7 +10,7 @@ def scrape():
     # NASA Mars News
     url = "https://mars.nasa.gov/news"
     browser.visit(url)
-    time.sleep(5)
+    time.sleep(3)
     # Get html of browser
     html = browser.html
     # Parse html
@@ -27,9 +27,10 @@ def scrape():
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     # Visit url
     browser.visit(url)
+    time.sleep(3)
     # Click FULL IMAGE
     browser.click_link_by_id('full_image')
-    time.sleep(5)
+    time.sleep(3)
     # Get html from browser
     html = browser.html
     # Parse html
@@ -42,9 +43,9 @@ def scrape():
     # Mars Facts
     url = "https://space-facts.com/mars/"
     browser.visit(url)
-    time.sleep(5)
+    time.sleep(3)
     mars = pd.read_html(url)
-    table_html = mars[0].to_html(header=False)
+    table_html = mars[0].to_html(header=False, classes = "table-striped")
     
     # Vist url
     base_url = "https://astrogeology.usgs.gov"
@@ -53,7 +54,7 @@ def scrape():
 
     # Get html of current browser
     html = browser.html
-    time.sleep(5)
+    time.sleep(3)
     # Parse html
     soup = bs(html, "html.parser")
     # Find html with tag "a" and class "product-item"
@@ -86,6 +87,7 @@ def scrape():
         'img_url': image_url}
         hemisphere_image_urls.append(img_dict)
     
+    browser.windows.current
     browser.quit()
 
     scrape_dict = {

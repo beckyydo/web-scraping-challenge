@@ -1,6 +1,10 @@
 .img-auto{
     width: 100%;
+    height: auto;
 }
 .header_align {
     text-align: center;
+}
+.ft-img-auto {
+    width: 20%;
 }
